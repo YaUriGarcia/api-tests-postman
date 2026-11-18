@@ -1,0 +1,29 @@
+name: API Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Ejecutar colección con Newman
+        run: npm test
+      - name: Guardar reporte
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: newman-report
+          path: reports/
+          retention-days: 30

@@ -1,0 +1,25 @@
+{
+  "name": "api-tests-postman",
+  "version": "1.0.0",
+  "description": "Pruebas de API con Postman y Newman sobre Restful-Booker",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run collections/restful-booker.postman_collection.json -r cli,htmlextra --reporter-htmlextra-export reports/newman-report.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaUriGarcia/api-tests-postman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/YaUriGarcia/api-tests-postman/issues"
+  },
+  "homepage": "https://github.com/YaUriGarcia/api-tests-postman#readme",
+  "devDependencies": {
+    "newman": "^6.2.3",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}
